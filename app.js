@@ -3,10 +3,16 @@ const app = express();
 
 
 
-app.get('/makers/:name', (req, res) => {
-  var fl = req.params.name.charAt(0).toUpperCase();
-  name = fl + req.params.name.slice(1)
-  res.send('<h1>Hola '+ name +'!</h1>');
+app.get('/', (req, res) => {
+  out="";
+  for (let i = 1; i < 51; i++) {
+    if(i % 2 === 0){
+      out = out + '<p>'+i+' Soy Par!</p>';
+    }else{
+      out = out +'<p>'+i+' Soy Impar!</p>';
+    }    
+  }
+  res.send(out);  
 });
 
 app.listen(3000, () => console.log('Listening on port 3000!'));
